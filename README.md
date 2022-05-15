@@ -1,8 +1,7 @@
 # TypeScript Patterns
 
-This project contains TypeScript implementations of canonical algorithms and data structures.
-
-The project also provides examples of other Node patterns, implemented in TypeScript.
+Algorithms, data structures, programming patterns, and Node usage examples,
+implemented in TypeScript.
 
 ## Contributing
 
@@ -34,10 +33,11 @@ merchantability, or fitness for a particular purpose.
 
 For example:
 
-    npx jest -t 'Graph'
+    npx jest -t 'regex'
 
 ### Build
 
     npm run build
 
-This tests, lints, and compiles the code. Run this before pushing code.
+This tests, compiles, and lints the source code. Run this before pushing a
+change.
