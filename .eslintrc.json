@@ -1,25 +1,24 @@
 {
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-      "tsconfigRootDir": ".",
-      "project": "tsconfig.eslint.json"
-    },
-    "plugins": [
-      "@typescript-eslint"
-    ],
-    "extends": [
-      "eslint:recommended",
-      "plugin:@typescript-eslint/eslint-recommended",
-      "plugin:@typescript-eslint/recommended",
-      "plugin:@typescript-eslint/recommended-requiring-type-checking",
-      "airbnb-typescript/base"
-    ],
-    "rules": {
-      "no-console": 0,
-      "import/prefer-default-export": 0,
-      "max-classes-per-file": 0,
-      "lines-between-class-members": 0,
-      "@typescript-eslint/lines-between-class-members": 0,
-      "no-restricted-syntax": ["error", "ForInStatement", "LabeledStatement", "WithStatement"]
-    }
-  }
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "tsconfigRootDir": ".",
+    "project": "tsconfig.eslint.json"
+  },
+  "env": {
+    "node": true
+  },
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking"
+  ],
+  "rules": {
+    "@typescript-eslint/explicit-function-return-type": 1,
+    "no-console": 1
+  },
+  "ignorePatterns": ["dist"]
+}
