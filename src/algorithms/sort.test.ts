@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { insertionSort } from './sort';
+import { insertionSort, selectionSort } from './sort';
 
 describe('sort', () => {
   describe('insertionSort', () => {
@@ -24,6 +24,19 @@ describe('sort', () => {
     test('sorts an array of strings', () => {
       const input = ['d', 'h', 'f', 'c', 'e', 'a', 'g', 'b'];
       insertionSort(input);
+      expect(input).toEqual(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']);
+    });
+  });
+
+  describe('selectionSort', () => {
+    test('sorts an array of numbers', () => {
+      const input = [11, 5, 19, 2, 13, 1, 7, 17, 3];
+      selectionSort(input);
+      expect(input).toEqual([1, 2, 3, 5, 7, 11, 13, 17, 19]);
+    });
+    test('sorts an array of strings', () => {
+      const input = ['d', 'h', 'f', 'c', 'e', 'a', 'g', 'b'];
+      selectionSort(input);
       expect(input).toEqual(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']);
     });
   });

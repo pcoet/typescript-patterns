@@ -16,7 +16,7 @@ type Sortable = number | string;
 
 /**
  * Sorts an input array using insertion sort.
- * @param a An array of sortable elements
+ * @param a An array of Sortable elements
  */
 export function insertionSort(a: Sortable[]): void {
   let i = 1;
@@ -28,6 +28,29 @@ export function insertionSort(a: Sortable[]): void {
       j = j - 1;
     }
     a[j + 1] = x;
+    i = i + 1;
+  }
+}
+
+/**
+ * Sorts an input array using selection sort.
+ * @param a An array of Sortable elements
+ */
+export function selectionSort(a: Sortable[]): void {
+  const l = a.length;
+  let i = 0;
+  while (i < l - 1) {
+    let min = i;
+    let j = i + 1;
+    while (j < l) {
+      if (a[j] < a[min]) {
+        min = j
+      }
+      j = j + 1;
+    }
+    if (min !== i) {
+      [a[i], a[min]] = [a[min], a[i]] // swap a[i] and a[min]
+    }
     i = i + 1;
   }
 }
