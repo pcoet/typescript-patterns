@@ -1,7 +1,6 @@
-# TypeScript Patterns
+# TypeScript patterns
 
-Algorithms, data structures, programming patterns, and Node usage examples,
-implemented in TypeScript.
+Programming patterns and TypeScript usage examples.
 
 ## Contributing
 
