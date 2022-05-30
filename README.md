@@ -1,6 +1,6 @@
 # TypeScript patterns
 
-Programming patterns and TypeScript usage examples.
+Programming patterns, JavaScript features, and TypeScript examples.
 
 ## Contributing
 
