@@ -1,16 +1,30 @@
-import { ColorState, updateColor } from './async';
+import { asyncUpdateColor, ColorState, updateColor } from './async';
 
 describe('async', () => {
-  describe('eventHandler', () => {
-    test('invokes callback on event', () => {
-      const state: ColorState = { current: 'BLUE', previous: 'RED'}
-      function setGreen(state: ColorState): void {
-        state.previous = state.current;
-        state.current = 'GREEN';
+  describe('updateColor', () => {
+    test('updates state using a callback function', () => {
+      const colorState: ColorState = { current: 'BLUE', previous: 'RED'}
+      function setGreen(cs: ColorState): void {
+        cs.previous = cs.current;
+        cs.current = 'GREEN';
       }
-      updateColor(state, setGreen);
-      expect(state.current).toBe('GREEN');
-      expect(state.previous).toBe('BLUE');
+      updateColor(colorState, setGreen);
+      expect(colorState.current).toBe('GREEN');
+      expect(colorState.previous).toBe('BLUE');
+    });
+  });
+  describe('updateColor', () => {
+    test('updates state after a timeout, using a callback function', done => {
+      const colorState: ColorState = { current: 'BLUE', previous: 'RED'}
+      function waitForSetGreen(cs: ColorState): void {
+        cs.previous = cs.current;
+        cs.current = 'GREEN';
+        expect(colorState.current).toBe('GREEN');
+        expect(colorState.previous).toBe('BLUE');
+        done();
+      }
+      // For a better demo, *temporarily* change the timeout from 0 to 3000.
+      asyncUpdateColor(colorState, waitForSetGreen, 0);
     });
   });
 });
