@@ -19,7 +19,7 @@ export function updateColor(state: ColorState, fn: (state: ColorState) => void):
  * @param state The state object to update
  * @param fn The callback function that updates the state
  */
-export function asyncUpdateColor(
+export function updateColorWithTimeout(
   state: ColorState,
   fn: (state: ColorState) => void,
   timeout?: number,

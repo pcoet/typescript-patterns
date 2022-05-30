@@ -1,4 +1,4 @@
-import { asyncUpdateColor, ColorState, updateColor } from './async';
+import { updateColorWithTimeout, ColorState, updateColor } from './async';
 
 describe('async', () => {
   describe('updateColor', () => {
@@ -13,7 +13,7 @@ describe('async', () => {
       expect(colorState.previous).toBe('BLUE');
     });
   });
-  describe('updateColor', () => {
+  describe('updateColorWithTimeout', () => {
     test('updates state after a timeout, using a callback function', done => {
       const colorState: ColorState = { current: 'BLUE', previous: 'RED'}
       function waitForSetGreen(cs: ColorState): void {
@@ -24,7 +24,7 @@ describe('async', () => {
         done();
       }
       // For a better demo, *temporarily* change the timeout from 0 to 3000.
-      asyncUpdateColor(colorState, waitForSetGreen, 0);
+      updateColorWithTimeout(colorState, waitForSetGreen, 0);
     });
   });
 });
