@@ -12,7 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { updateColorWithTimeout, ColorState, updateColor } from './async';
+import {
+  updateColorWithTimeout,
+  ColorState,
+  updateColor,
+  makePromiseForNumber,
+  processNumberAsync,
+  processPromiseForNumber,
+} from './async';
 
 describe('async', () => {
   describe('updateColor', () => {
@@ -40,5 +47,30 @@ describe('async', () => {
       // For a better demo, *temporarily* change the timeout from 0 to 3000.
       updateColorWithTimeout(colorState, waitForSetGreen, 0);
     });
+  });
+  describe('makePromiseForNumber', () => {
+    test('returns a promise for the input string', async () => {
+       // For a better demo, *temporarily* change the delay from 0 to 3000.
+      const result = await makePromiseForNumber(42, 0);
+      expect(result).toBe(42);
+    });
+  })
+
+  describe('processPromiseForNumber', () => {
+    test('processes a non-negative number and returns the expected result', async () => {
+      expect(await processPromiseForNumber(11)).toBe('23');
+    })
+    test('rejects a negative number and returns the expected error message', async () => {
+      expect(await processPromiseForNumber(-11)).toBe('Negative number -11 not allowed');
+    })
+  });
+
+  describe('processNumberAsync', () => {
+    test('processes a non-negative number and returns the expected result', async () => {
+      expect(await processNumberAsync(11)).toBe('23');
+    })
+    test('rejects a negative number and returns the expected error message', async () => {
+      expect(await processNumberAsync(-11)).toBe('Negative number -11 not allowed');
+    })
   });
 });

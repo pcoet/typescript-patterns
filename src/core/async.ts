@@ -43,3 +43,51 @@ export function updateColorWithTimeout(
   }
   setTimeout(() => { fn(state) }, timeout);
 }
+
+/**
+ * Takes a number as input and returns a promise for the number. Rejects negative numbers.
+ * @param n The input number
+ * @param delay The duration of the delay before the promise is resolved
+ * @return A promise for the input number
+ */
+export function makePromiseForNumber(n: number, delay?: number): Promise<number> {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (n < 0) {
+        reject(`Negative number ${n} not allowed`);
+      }
+      resolve(n);
+    }, delay);
+  });
+}
+
+/**
+ * Returns a promise for the result of the following operations on n:
+ * double; add 1; stringify.
+ * @param n The number to be processed
+ * @return The stringified result of doubling n and adding 1, or an error message.
+ */
+export function processPromiseForNumber(n: number): Promise<string> {
+  return makePromiseForNumber(n)
+    .then(n => { return n * 2 })
+    .then(n => { return n + 1 })
+    .then(n => { return n.toString() })
+    .catch((err: string) => { return err });
+}
+
+/**
+ * Returns a promise for the result of the following operations on n:
+ * double; add 1; stringify.
+ * @param n The number to be processed
+ * @return The stringified result of doubling n and adding 1, or an error message.
+ */
+ export async function processNumberAsync(n: number): Promise<string> {
+  try {
+     const promiseForN = await makePromiseForNumber(n);
+     const doubled = promiseForN * 2;
+     const plusOne = doubled + 1;
+     return plusOne.toString();
+   } catch (err) {
+     return err as string;
+   }
+}
