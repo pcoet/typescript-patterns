@@ -18,7 +18,7 @@ import {
   updateColor,
   makePromiseForNumber,
   processNumberAsync,
-  processPromiseForNumber,
+  processNumberPromise,
 } from './async';
 
 describe('async', () => {
@@ -58,10 +58,10 @@ describe('async', () => {
 
   describe('processPromiseForNumber', () => {
     test('processes a non-negative number and returns the expected result', async () => {
-      expect(await processPromiseForNumber(11)).toBe('23');
+      expect(await processNumberPromise(11)).toBe('23');
     })
     test('rejects a negative number and returns the expected error message', async () => {
-      expect(await processPromiseForNumber(-11)).toBe('Negative number -11 not allowed');
+      expect(await processNumberPromise(-11)).toBe('Negative number -11 not allowed');
     })
   });
 

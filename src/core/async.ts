@@ -61,33 +61,45 @@ export function makePromiseForNumber(n: number, delay?: number): Promise<number>
   });
 }
 
-/**
- * Returns a promise for the result of the following operations on n:
- * double; add 1; stringify.
- * @param n The number to be processed
- * @return The stringified result of doubling n and adding 1, or an error message.
- */
-export function processPromiseForNumber(n: number): Promise<string> {
-  return makePromiseForNumber(n)
-    .then(n => { return n * 2 })
-    .then(n => { return n + 1 })
-    .then(n => { return n.toString() })
-    .catch((err: string) => { return err });
+async function doubleAsync(n: number): Promise<number> {
+  const _n = await makePromiseForNumber(n);
+  return _n * 2;
+}
+
+async function plusOneAsync(n: number): Promise<number> {
+  const _n = await makePromiseForNumber(n);
+  return _n + 1;
 }
 
 /**
+ * Example of promise chaining.
  * Returns a promise for the result of the following operations on n:
  * double; add 1; stringify.
  * @param n The number to be processed
  * @return The stringified result of doubling n and adding 1, or an error message.
  */
- export async function processNumberAsync(n: number): Promise<string> {
+export function processNumberPromise(n: number): Promise<string> {
+  return makePromiseForNumber(n)
+    .then(n => { return doubleAsync(n); })
+    .then(n => { return plusOneAsync(n); })
+    .then(n => { return n.toString(); })
+    .catch((err: string) => { return err }); // return the error, instead of logging it, for ease of testing
+}
+
+/**
+ * Example of async/await.
+ * Returns a promise for the result of the following operations on n:
+ * double; add 1; stringify.
+ * @param n The number to be processed
+ * @return The stringified result of doubling n and adding 1, or an error message.
+ */
+export async function processNumberAsync(n: number): Promise<string> {
   try {
-     const promiseForN = await makePromiseForNumber(n);
-     const doubled = promiseForN * 2;
-     const plusOne = doubled + 1;
+     const _n = await makePromiseForNumber(n);
+     const doubled = await doubleAsync(_n);
+     const plusOne = await plusOneAsync(doubled);
      return plusOne.toString();
    } catch (err) {
-     return err as string;
+     return err as string; // return the error, instead of logging it, for ease of testing
    }
 }
