@@ -45,12 +45,26 @@ export function updateColorWithTimeout(
 }
 
 /**
+ * Takes a string or number as input value and returns a promise for the value.
+ * @param val The input value
+ * @param delay The duration of the delay before the promise is resolved
+ * @return A promise for the input value
+ */
+export function makePromise<T extends string | number>(val: T, delay?: number): Promise<T> {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(val);
+    }, delay);
+  });
+}
+
+/**
  * Takes a number as input and returns a promise for the number. Rejects negative numbers.
  * @param n The input number
  * @param delay The duration of the delay before the promise is resolved
  * @return A promise for the input number
  */
-export function makePromiseForNumber(n: number, delay?: number): Promise<number> {
+export function makePromiseForPositiveNumber(n: number, delay?: number): Promise<number> {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (n < 0) {
@@ -62,13 +76,18 @@ export function makePromiseForNumber(n: number, delay?: number): Promise<number>
 }
 
 async function doubleAsync(n: number): Promise<number> {
-  const _n = await makePromiseForNumber(n);
+  const _n = await makePromise(n);
   return _n * 2;
 }
 
 async function plusOneAsync(n: number): Promise<number> {
-  const _n = await makePromiseForNumber(n);
+  const _n = await makePromise(n);
   return _n + 1;
+}
+
+async function stringifyAsync(n: number): Promise<string> {
+  const _n = await makePromise(n);
+  return _n.toString();
 }
 
 /**
@@ -79,10 +98,10 @@ async function plusOneAsync(n: number): Promise<number> {
  * @return The stringified result of doubling n and adding 1, or an error message.
  */
 export function processNumberPromise(n: number): Promise<string> {
-  return makePromiseForNumber(n)
+  return makePromiseForPositiveNumber(n)
     .then(n => { return doubleAsync(n); })
     .then(n => { return plusOneAsync(n); })
-    .then(n => { return n.toString(); })
+    .then(n => { return stringifyAsync(n); })
     .catch((err: string) => { return err }); // return the error, instead of logging it, for ease of testing
 }
 
@@ -95,10 +114,10 @@ export function processNumberPromise(n: number): Promise<string> {
  */
 export async function processNumberAsync(n: number): Promise<string> {
   try {
-     const _n = await makePromiseForNumber(n);
+     const _n = await makePromiseForPositiveNumber(n);
      const doubled = await doubleAsync(_n);
      const plusOne = await plusOneAsync(doubled);
-     return plusOne.toString();
+     return await  stringifyAsync(plusOne);
    } catch (err) {
      return err as string; // return the error, instead of logging it, for ease of testing
    }

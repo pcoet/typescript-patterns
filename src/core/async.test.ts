@@ -16,7 +16,8 @@ import {
   updateColorWithTimeout,
   ColorState,
   updateColor,
-  makePromiseForNumber,
+  makePromise,
+  makePromiseForPositiveNumber,
   processNumberAsync,
   processNumberPromise,
 } from './async';
@@ -34,6 +35,7 @@ describe('async', () => {
       expect(colorState.previous).toBe('BLUE');
     });
   });
+
   describe('updateColorWithTimeout', () => {
     test('updates state after a timeout, using a callback function', done => {
       const colorState: ColorState = { current: 'BLUE', previous: 'RED'}
@@ -48,13 +50,28 @@ describe('async', () => {
       updateColorWithTimeout(colorState, waitForSetGreen, 0);
     });
   });
+
+  describe('makePromise', () => {
+    test('returns a promise for a string', async () => {
+       // For a better demo, *temporarily* change the delay from 0 to 3000.
+      const result = await makePromise('my string', 0);
+      expect(result).toBe('my string');
+    });
+
+    test('returns a promise for a number', async () => {
+      // For a better demo, *temporarily* change the delay from 0 to 3000.
+     const result = await makePromise(42, 0);
+     expect(result).toBe(42);
+   });
+  });
+
   describe('makePromiseForNumber', () => {
     test('returns a promise for the input string', async () => {
        // For a better demo, *temporarily* change the delay from 0 to 3000.
-      const result = await makePromiseForNumber(42, 0);
+      const result = await makePromiseForPositiveNumber(42, 0);
       expect(result).toBe(42);
     });
-  })
+  });
 
   describe('processPromiseForNumber', () => {
     test('processes a non-negative number and returns the expected result', async () => {
