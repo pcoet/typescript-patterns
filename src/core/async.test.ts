@@ -65,7 +65,7 @@ describe('async', () => {
    });
   });
 
-  describe('makePromiseForNumber', () => {
+  describe('makePromiseForPositiveNumber', () => {
     test('returns a promise for the input string', async () => {
        // For a better demo, *temporarily* change the delay from 0 to 3000.
       const result = await makePromiseForPositiveNumber(42, 0);
@@ -73,7 +73,7 @@ describe('async', () => {
     });
   });
 
-  describe('processPromiseForNumber', () => {
+  describe('processNumberPromise', () => {
     test('processes a non-negative number and returns the expected result', async () => {
       expect(await processNumberPromise(11)).toBe('23');
     })
