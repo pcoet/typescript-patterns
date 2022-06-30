@@ -23,7 +23,7 @@
 /**
  * Example of an iterable class. Generates Fibonacci numbers.
  */
-export class IterableFibonacci implements Iterable<number> {
+export class FibonacciIterable implements Iterable<number> {
   private numFibs: number;
 
   /**
@@ -35,13 +35,14 @@ export class IterableFibonacci implements Iterable<number> {
     }
     this.numFibs = numFibs;
   }
+
   [Symbol.iterator](): Iterator<number> {
     const limit = this.numFibs;
     let count = 0;
     let n1 = 1;
     let n2 = 1;
     return {
-      next: (): { done: boolean, value: number} => {
+      next: (): IteratorResult<number> => {
         count++;
         if (count === 1) {
           return {
