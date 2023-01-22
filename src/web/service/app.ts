@@ -15,12 +15,10 @@
 import express, { Express } from 'express';
 
 /*
- * To run the app: `npm run build && node dist/web/app.js`
+ * To run the app: `npm run build && node dist/web/service/app.js`
  */
 const app: Express = express();
-const port = 3000;
-
-app.use(express.static('static'))
+const port = 3030;
 
 app.get('/', (_req, res) => {
   res.send('Hello World!')

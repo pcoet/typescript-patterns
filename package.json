@@ -7,7 +7,7 @@
     "compile": "tsc",
     "test": "jest",
     "lint": "eslint .",
-    "copy-web": "cp -r src/web/static dist/web/static/",
+    "copy-web": "",
     "copy": "npm run copy-web",
     "build": "npm run clean && npm run test && npm run compile && npm run lint && npm run copy"
 
