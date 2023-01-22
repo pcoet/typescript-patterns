@@ -7,12 +7,16 @@
     "compile": "tsc",
     "test": "jest",
     "lint": "eslint .",
-    "build": "npm run clean && npm run test && npm run compile && npm run lint"
+    "copy-web": "",
+    "copy": "npm run copy-web",
+    "build": "npm run clean && npm run test && npm run compile && npm run lint && npm run copy"
+
   },
   "keywords": [],
   "author": "David Huntsperger",
   "license": "Apache 2.0",
   "devDependencies": {
+    "@types/express": "^4.17.15",
     "@types/jest": "^27.5.0",
     "@typescript-eslint/eslint-plugin": "^5.22.0",
     "@typescript-eslint/parser": "^5.22.0",
@@ -20,5 +24,8 @@
     "jest": "^28.1.0",
     "ts-jest": "^28.0.1",
     "typescript": "^4.6.4"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
   }
 }
