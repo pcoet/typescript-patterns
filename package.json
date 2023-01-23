@@ -7,10 +7,10 @@
     "compile": "tsc",
     "test": "jest",
     "lint": "eslint .",
-    "copy-web": "",
+    "copy-web": "cp -r src/web/site/static/ dist/web/site/",
     "copy": "npm run copy-web",
-    "build": "npm run clean && npm run test && npm run compile && npm run lint && npm run copy"
-
+    "build": "npm run clean && npm run test && npm run compile && npm run lint && npm run copy",
+    "serve": "http-server dist/web/site/"
   },
   "keywords": [],
   "author": "David Huntsperger",
@@ -26,6 +26,7 @@
     "typescript": "^4.6.4"
   },
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "http-server": "^14.1.1"
   }
 }
