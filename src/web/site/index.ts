@@ -1,4 +1,4 @@
-const myHeading = document.querySelector("h1");
-if (myHeading) {
-  myHeading.textContent = "Hello world!";
+const id = document.querySelector("#replace");
+if (id) {
+  id.textContent = "Hello world!";
 }

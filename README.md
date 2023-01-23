@@ -40,3 +40,10 @@ For example:
 
 This tests, compiles, and lints the source code. Run this before pushing a
 change.
+
+### Serve
+
+    npm run serve
+
+This serves files from **dist/web/site** at `http://localhost:8080`. To see
+changes in Chrome, you might need to force reload using **SHIFT-COMMAND-R**.

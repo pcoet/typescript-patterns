@@ -10,7 +10,7 @@
     "copy-web": "cp -r src/web/site/static/ dist/web/site/",
     "copy": "npm run copy-web",
     "build": "npm run clean && npm run test && npm run compile && npm run lint && npm run copy",
-    "serve": "http-server dist/web/site/"
+    "serve": "http-server -c-1 dist/web/site/"
   },
   "keywords": [],
   "author": "David Huntsperger",
