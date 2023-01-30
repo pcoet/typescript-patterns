@@ -5,15 +5,23 @@
 body {
   background: #1b1b1b;
   color: #cdcdcd;
-  height: 100vh;
   margin: 0;
   font: 400 100% system-ui, sans-serif;
 }
 
+a {
+  color: #cdcdcd;
+  text-decoration: none;
+}
+
+a:focus, a:hover, a:active {
+  text-decoration: underline;
+  color: #fff;
+}
+
 .wrapper {
   background: #fff;
-  height: calc(100vh - 10px);
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.33);
+  height: 100vh;
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
   grid-template-rows: auto 1fr auto;
@@ -21,7 +29,6 @@ body {
 }
 .wrapper > * {
   padding: 1rem;
-  text-align: center;
 }
 @media (max-width: 600px) {
   .wrapper {
@@ -66,8 +73,5 @@ body {
 .footer {
   background: #1b1b1b;
   grid-column: 1/-1;
-}
-
-article p {
-  text-align: left;
+  text-align: center;
 }
