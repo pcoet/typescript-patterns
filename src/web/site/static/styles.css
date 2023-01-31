@@ -29,19 +29,9 @@ a:focus, a:hover, a:active {
 .wrapper > * {
   padding: 1rem;
 }
-@media (max-width: 600px) {
-  .wrapper {
-    grid-template-columns: 100%;
-    grid-template-rows: auto;
-  }
-  .wrapper > * {
-    grid-column: 1/-1 !important;
-    grid-row: auto !important;
-  }
-}
 
 .header {
-  grid-column: 1/-1;
+  grid-column: 1/-1; /* -1 is the last grid line */
   background: #1b1b1b;
   text-align: left;
 }
@@ -58,19 +48,50 @@ a:focus, a:hover, a:active {
   padding: 0;
 }
 
+.main {
+  background: #1b1b1b;
+  grid-column: 2/3;
+}
+
 .right-nav {
   background: #1b1b1b;
   grid-column: 3/4;
   grid-row: 2/4;
 }
 
-.main {
-  background: #1b1b1b;
-  grid-column: 2/3;
-}
-
 .footer {
   background: #1b1b1b;
   grid-column: 1/-1;
   text-align: center;
+}
+
+@media (max-width: 600px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  .header {
+    grid-row: 1/2;
+    text-align: center;
+  }
+  .left-nav {
+    grid-column: 1/-1;
+    grid-row: 2/3;
+    text-align: center;
+  }
+
+  .right-nav {
+    grid-column: 1/-1;
+    grid-row: 4/5;
+    text-align: center;
+  }
+
+  .main {
+    grid-column: 1/-1;
+    grid-row: 3/4;
+  }
+
+  .footer {
+    grid-row: 5/6;
+  }
 }
