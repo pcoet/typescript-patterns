@@ -1,4 +1,108 @@
-body {
-  background-color: #dbe3ef;
+* {
+  box-sizing: border-box;
 }
 
+body {
+  color: #cdcdcd;
+  margin: 0;
+  font: 400 100% system-ui, sans-serif;
+}
+
+a {
+  color: #cdcdcd;
+  text-decoration: none;
+}
+
+a:focus, a:hover, a:active {
+  text-decoration: underline;
+  color: #fff;
+}
+
+p, li {
+  line-height: 1.4;
+}
+
+/********** Start grid container **********/
+.wrapper {
+  background: #fff;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 200px 1fr 200px;
+  grid-template-rows: auto 1fr auto;
+  gap: 1px;
+}
+/********** End grid container **********/
+
+/********** Start grid items **********/
+.header {
+  grid-column: 1/-1; /* -1 is the last grid line */
+  background: #1b1b1b;
+  text-align: left;
+}
+
+.left-nav {
+  background: #1b1b1b;
+  grid-column: 1/2;
+  grid-row: 2/4;
+}
+
+.main {
+  background: #1b1b1b;
+  grid-column: 2/3;
+}
+
+.right-nav {
+  background: #1b1b1b;
+  grid-column: 3/4;
+  grid-row: 2/4;
+}
+
+.footer {
+  background: #1b1b1b;
+  grid-column: 1/-1;
+  text-align: center;
+}
+/********** End grid items **********/
+
+.nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper > * {
+  padding: 1rem;
+}
+
+/********** Start media queries **********/
+@media (max-width: 600px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  .header {
+    grid-row: 1/2;
+    text-align: center;
+  }
+  .left-nav {
+    grid-column: 1/-1;
+    grid-row: 2/3;
+    text-align: center;
+  }
+
+  .right-nav {
+    grid-column: 1/-1;
+    grid-row: 4/5;
+    text-align: center;
+  }
+
+  .main {
+    grid-column: 1/-1;
+    grid-row: 3/4;
+  }
+
+  .footer {
+    grid-row: 5/6;
+  }
+}
+/********** End media queries **********/
