@@ -41,9 +41,11 @@ For example:
 This tests, compiles, and lints the source code. Run this before pushing a
 change.
 
+Note that the TypeScript files in the `src` directory are compiled by `tsc`, and
+the TypeScript files in the `site` directory are compiled by `parcel`.
+
 ### Serve
 
     npm run serve
 
-This serves files from **dist/web/site** at `http://localhost:8080`. To see
-changes in Chrome, you might need to force reload using **SHIFT-COMMAND-R**.
+This serves files from the `site` directory at `http://localhost:1234`.
