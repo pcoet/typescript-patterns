@@ -46,6 +46,6 @@ the TypeScript files in the `site` directory are compiled by `parcel`.
 
 ### Serve
 
-    npm start
+    npm run serve
 
 This serves files from the `site` directory at `http://localhost:1234`.
