@@ -36,19 +36,19 @@
   transform: scale(-1);
 }
 
-.heart {
+.hearts {
   color: red;
 }
 
-.club {
+.clubs {
   color: black;
 }
 
-.spade {
+.spades {
   color: black;
 }
 
-.diamond {
+.diamonds {
   color: red;
 }
 
