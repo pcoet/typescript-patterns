@@ -85,12 +85,14 @@ const deck: Record<CardId, Card> = {
   SA : { rank: 'A', suit: 'spades' },
 };
 
-function setRank(cardId: CardId, card: HTMLDivElement, div: HTMLDivElement): void {
+function showRank(cardId: CardId, card: HTMLDivElement): void {
+  const div = document.createElement('div');
   div.innerHTML = `${deck[cardId].rank}`;
   card.append(div);
 }
 
-function setSuit(cardId: CardId, card: HTMLDivElement, div: HTMLDivElement): void {
+function showSuit(cardId: CardId, card: HTMLDivElement): void {
+  const div = document.createElement('div');
   div.innerHTML = `${suitIconMap[deck[cardId].suit]}`;
   card.append(div);
 }
@@ -102,9 +104,9 @@ function deal(cardIds: CardId[]): void {
       const card = document.createElement('div');
       card.id = `card${i}`;
       card.setAttribute('class', `card ${deck[cardIds[i]].suit}`);
-      setRank(cardIds[i], card, document.createElement('div'));
-      setSuit(cardIds[i], card, document.createElement('div'));
-      setRank(cardIds[i], card, document.createElement('div'));
+      showRank(cardIds[i], card);
+      showSuit(cardIds[i], card);
+      showRank(cardIds[i], card);
       hand.append(card);
     }
   }
