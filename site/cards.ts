@@ -12,12 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-type CardId =
-  'C2' | 'C3' | 'C4' | 'C5' | 'C6' | 'C7' | 'C8' | 'C9' | 'C10'| 'CJ' | 'CQ' | 'CK' | 'CA' |
-  'D2' | 'D3' | 'D4' | 'D5' | 'D6' | 'D7' | 'D8' | 'D9' | 'D10'| 'DJ' | 'DQ' | 'DK' | 'DA' |
-  'H2' | 'H3' | 'H4' | 'H5' | 'H6' | 'H7' | 'H8' | 'H9' | 'H10'| 'HJ' | 'HQ' | 'HK' | 'HA' |
-  'S2' | 'S3' | 'S4' | 'S5' | 'S6' | 'S7' | 'S8' | 'S9' | 'S10'| 'SJ' | 'SQ' | 'SK' | 'SA';
+const CARD_IDS = [
+  'C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8', 'C9', 'C10', 'CJ', 'CQ', 'CK', 'CA',
+  'D2', 'D3', 'D4', 'D5', 'D6', 'D7', 'D8', 'D9', 'D10', 'DJ', 'DQ', 'DK', 'DA',
+  'H2', 'H3', 'H4', 'H5', 'H6', 'H7', 'H8', 'H9', 'H10', 'HJ', 'HQ', 'HK', 'HA',
+  'S2', 'S3', 'S4', 'S5', 'S6', 'S7', 'S8', 'S9', 'S10', 'SJ', 'SQ', 'SK', 'SA'
+] as const;
 
+type CardIdTuple = typeof CARD_IDS;
+type CardId = CardIdTuple[number];
 type Rank = '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10'| 'J' | 'Q' | 'K' | 'A';
 type Suit = 'clubs' | 'diamonds' | 'hearts' | 'spades';
 type SuitIcon =  '&clubs;' | '&diams;' | '&hearts;' | '&spades;';
@@ -97,6 +100,13 @@ function showSuit(cardId: CardId, card: HTMLDivElement): void {
   card.append(div);
 }
 
+function shuffle(cards: CardId[]): void {
+  for (let i = cards.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [cards[i], cards[j]] = [cards[j], cards[i]];
+  }
+}
+
 function deal(cardIds: CardId[]): void {
   const hand = document.querySelector('#hand');
   if (hand) {
@@ -112,4 +122,12 @@ function deal(cardIds: CardId[]): void {
   }
 }
 
-deal(['H10', 'HJ', 'CQ', 'DK', 'SA']);
+const cards: CardId[] = [
+  'C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8', 'C9', 'C10', 'CJ', 'CQ', 'CK', 'CA',
+  'D2', 'D3', 'D4', 'D5', 'D6', 'D7', 'D8', 'D9', 'D10', 'DJ', 'DQ', 'DK', 'DA',
+  'H2', 'H3', 'H4', 'H5', 'H6', 'H7', 'H8', 'H9', 'H10', 'HJ', 'HQ', 'HK', 'HA',
+  'S2', 'S3', 'S4', 'S5', 'S6', 'S7', 'S8', 'S9', 'S10', 'SJ', 'SQ', 'SK', 'SA'
+];
+
+shuffle(cards);
+deal(cards.slice(0, 5));
