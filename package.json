@@ -8,8 +8,8 @@
     "test": "jest",
     "lint": "eslint .",
     "build": "npm run clean && npm run test && npm run compile && npm run build-site && npm run lint",
-    "build-site": "parcel build site/index.html --dist-dir dist/site",
-    "serve": "parcel site/*.html"
+    "build-site": "parcel build site/*.html --dist-dir dist/site",
+    "serve": "rm -rf .parcel-cache && parcel site/*.html"
   },
   "keywords": [],
   "author": "David Huntsperger",

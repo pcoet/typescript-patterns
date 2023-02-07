@@ -1,0 +1,63 @@
+.table {
+  background: green;
+  color: #000;
+}
+
+.hand {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: left;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #fff;
+  width: 200px;
+  aspect-ratio: 2.5 / 3.5;
+  padding: 0 5px;
+  margin: 10px;
+  font-size: 40px;
+  border-radius: 10px;
+}
+
+.card div:nth-child(1) {
+  text-align: left;
+}
+
+.card div:nth-child(2) {
+  text-align: center;
+  font-size: 80px;
+}
+
+.card div:nth-child(3) {
+  transform: scale(-1);
+}
+
+.hearts {
+  color: red;
+}
+
+.clubs {
+  color: black;
+}
+
+.spades {
+  color: black;
+}
+
+.diamonds {
+  color: red;
+}
+
+/********** Start media queries **********/
+@media (max-width: 600px) {
+  .hand {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+}
+/********** End media queries **********/
