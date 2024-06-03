@@ -20,5 +20,5 @@
     "@typescript-eslint/explicit-function-return-type": 1,
     "no-console": 0
   },
-  "ignorePatterns": ["dist"]
+  "ignorePatterns": ["dist", "examples"]
 }

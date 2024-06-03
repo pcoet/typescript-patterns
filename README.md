@@ -16,36 +16,18 @@ This project is not an official Google project. It is not supported by
 Google and Google specifically disclaims all warranties as to its quality,
 merchantability, or fitness for a particular purpose.
 
-## Developing
+## Scripts
 
-### Install
+Use the following scripts to work with the examples in `src`:
 
-    npm install
+* `npm install`: Install dependencies.
+* `npm run test`: Run the tests.
+* `npx jest -t '<TestName>'`: Run a single test, e.g. `npx jest -t 'regex'`
+* `npm run build`: Tests, compiles, and lints the source code. Run this before
+   pushing a change.
 
-### Test
+### Examples
 
-    npm run test
-
-#### Run a single test
-
-    npx jest -t '<TestName>'
-
-For example:
-
-    npx jest -t 'regex'
-
-### Build
-
-    npm run build
-
-This tests, compiles, and lints the source code. Run this before pushing a
-change.
-
-Note that the TypeScript files in the `src` directory are compiled by `tsc`, and
-the TypeScript files in the `site` directory are compiled by `parcel`.
-
-### Serve
-
-    npm run serve
-
-This serves files from the `site` directory at `http://localhost:1234`.
+The projects in the `examples` directory are standalone packages with their own
+`package.json` files. See their respective README files for details on running
+these projects.

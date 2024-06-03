@@ -7,9 +7,7 @@
     "compile": "tsc",
     "test": "jest",
     "lint": "eslint .",
-    "build": "npm run clean && npm run test && npm run compile && npm run build-site && npm run lint",
-    "build-site": "parcel build site/*.html --dist-dir dist/site",
-    "serve": "rm -rf .parcel-cache && parcel site/*.html"
+    "build": "npm run clean && npm run test && npm run compile && npm run lint"
   },
   "keywords": [],
   "author": "David Huntsperger",
@@ -21,7 +19,6 @@
     "@typescript-eslint/parser": "^5.22.0",
     "eslint": "^8.14.0",
     "jest": "^28.1.0",
-    "parcel": "^2.8.3",
     "ts-jest": "^28.0.1",
     "typescript": "^4.6.4"
   },
