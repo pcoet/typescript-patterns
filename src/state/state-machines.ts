@@ -15,7 +15,7 @@
 type EnabledState = 'ENABLED' | 'DISABLED';
 
 /**
- * Toggles the Enabled state.
+ * A simple state machine that toggles between two states: ENABLED and DISABLED.
  */
 export class Enabled {
   state: EnabledState;
